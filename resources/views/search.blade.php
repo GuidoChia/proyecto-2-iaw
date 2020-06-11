@@ -93,10 +93,6 @@
         <a href="{{ url('/home') }}">
             <button type="button" class="btn btn-secondary">Home</button>
         </a>
-        <a href="{{ url('/search') }}">
-            <button type="button" class="btn btn-secondary">Search</button>
-        </a>
-
         @else
         <a href="{{ route('login') }}">
             <button type="button" class="btn btn-secondary">Login</button>
@@ -113,7 +109,7 @@
     <div class="jumbotron">
         <div class="content">
             <div class="title m-b-md">
-                Laboratorio de Análisis Clínicos
+                Busqueda de reactivos
             </div>
         </div>
     </div>
