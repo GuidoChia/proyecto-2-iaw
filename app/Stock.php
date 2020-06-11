@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property string $created_at
  * @property string $updated_at
+ * @property int $amount
+ * @property string $expiration
+ * @property integer $presentation_id
  */
 class Stock extends Model
 {
+    use Searchable;
+
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -21,6 +26,6 @@ class Stock extends Model
     /**
      * @var array
      */
-    protected $fillable = ['created_at', 'updated_at'];
+    protected $fillable = ['created_at', 'updated_at', 'amount', 'expiration', 'presentation_id'];
 
 }

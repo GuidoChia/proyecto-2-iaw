@@ -21,3 +21,4 @@ yarn-error.log
 .vs/VSWorkspaceState.json
 .vs/Proyecto 2 IAW/v16/.suo
 .idea/
+out/

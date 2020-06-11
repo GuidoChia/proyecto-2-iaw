@@ -16,6 +16,9 @@ class CreateStocksTable extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer("amount");
+            $table->date("expiration");
+            $table->foreignId("presentation_id");
         });
     }
 

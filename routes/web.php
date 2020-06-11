@@ -18,6 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/upload', 'UploadController@index')->name('upload');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

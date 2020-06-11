@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Scout\Searchable;
 /**
  * @property integer $presentation_id
  * @property string $created_at
@@ -15,14 +15,14 @@ class Presentation extends Model
 {
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'presentation_id';
 
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';

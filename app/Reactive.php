@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Scout\Searchable;
 /**
  * @property integer $reactive_id
  * @property string $created_at
@@ -16,14 +16,14 @@ class Reactive extends Model
 {
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'reactive_id';
 
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
