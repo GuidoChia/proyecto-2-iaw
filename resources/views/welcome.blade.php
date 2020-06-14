@@ -37,7 +37,7 @@
         <a href="{{ url('/search') }}">
             <button type="button" class="btn btn-primary">Search</button>
         </a>
-        <a href="{{ url('/upload') }}">
+        <a href="{{ url('/upload-stock') }}">
             <button type="button" class="btn btn-primary">Upload</button>
         </a>
         @else

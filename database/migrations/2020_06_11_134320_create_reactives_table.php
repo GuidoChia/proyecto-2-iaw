@@ -14,7 +14,7 @@ class CreateReactivesTable extends Migration
     public function up()
     {
         Schema::create('reactives', function (Blueprint $table) {
-            $table->id("reactive_id");
+            $table->id();
             $table->timestamps();
             $table->string("name")->unique();
             $table->string("description");

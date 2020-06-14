@@ -17,8 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', 'SearchController@index')->name('search');
-Route::get('/upload', 'UploadController@index')->name('upload');
+Route::get('/search', 'SearchController@searchReactive')->name('search');
+Route::middleware('check_admin')->group(function () {
+    Route::get('/upload-stock', 'UploadStockController@index')->name('upload-stock');
+    Route::get('/upload-reactive', 'UploadReactiveController@index')->name('upload-reactive');
+});
+
+
 
 Auth::routes();
 

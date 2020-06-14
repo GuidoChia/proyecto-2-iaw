@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 /**
  * @property integer $id
@@ -14,8 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Stock extends Model
 {
-    use Searchable;
-
     /**
      * The "type" of the auto-incrementing ID.
      *
@@ -26,6 +25,14 @@ class Stock extends Model
     /**
      * @var array
      */
-    protected $fillable = ['created_at', 'updated_at', 'amount', 'expiration', 'presentation_id'];
+    protected $fillable = ['created_at', 'updated_at', 'amount', 'expiration', 'reactive_id'];
+
+    /**
+     * Get the reactive from the presentation.
+     */
+    public function reactive()
+    {
+        return $this->belongsTo('App\Reactive');
+    }
 
 }

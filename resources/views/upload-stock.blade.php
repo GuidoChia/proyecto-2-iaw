@@ -3,15 +3,13 @@
 @section('content')
 <div class="container-fluid flex-center position-ref full-height">
     <div class="jumbotron text-center">
-        <h1>Reactive upload</h1>
+        <h1>Stock upload</h1>
         <div class="content">
             <form>
+                @csrf
                 <div class="form-group">
                     <input class="form-control input-lg" id="reactive-input"
                            placeholder="Reactive">
-                </div>
-                <div class="form-group">
-                    <input class="form-control input-lg" id="presentation-input" placeholder="Presentation">
                 </div>
                 <div class="form-group">
                     <input class="form-control input-lg" id="amount-input" placeholder="Amount">

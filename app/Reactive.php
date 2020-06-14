@@ -12,15 +12,7 @@ use Laravel\Scout\Searchable;
  * @property string $description
  * @property string $barcode
  */
-class Reactive extends Model
-{
-    /**
-     * The primary key for the model.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'reactive_id';
-
+class Reactive extends Model {
     /**
      * The "type" of the auto-incrementing ID.
      *
@@ -32,5 +24,16 @@ class Reactive extends Model
      * @var array
      */
     protected $fillable = ['created_at', 'updated_at', 'name', 'description', 'barcode'];
+
+    /**
+     * Get the stocks for the reactive.
+     */
+    public function stocks() {
+        return $this->hasMany('App\\Stock');
+    }
+
+    public function scopeLike($query, $field, $value) {
+        return $query->where($field, 'LIKE', "%$value%");
+    }
 
 }

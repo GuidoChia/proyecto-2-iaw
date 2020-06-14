@@ -66,9 +66,23 @@
                     <a class="nav-link" href="{{ url('/search') }}">
                         Search
                     </a>
-                    <a class="nav-link" href="{{ url('/upload') }}">
-                        Upload
-                    </a>
+
+                    @if (Auth::user()->isAdmin())
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Upload
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('upload-reactive') }}">
+                                Upload reactive
+                            </a>
+                            <a class="dropdown-item" href="{{ route('upload-stock') }}">
+                                Upload stock
+                            </a>
+                        </div>
+                    </li>
+                    @endif
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

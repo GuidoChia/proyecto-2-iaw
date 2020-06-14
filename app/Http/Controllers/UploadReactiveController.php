@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Reactive;
 use Illuminate\Http\Request;
 
-class UploadController extends Controller
+class UploadReactiveController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +24,6 @@ class UploadController extends Controller
      */
     public function index()
     {
-        return view('upload');
+        return view('upload-reactive');
     }
 }

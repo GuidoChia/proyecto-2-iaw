@@ -12,7 +12,6 @@ class User extends Authenticatable
     const ADMIN_TYPE = 'admin';
     const USER_TYPE = 'user';
     public const DEFAULT_TYPE= self::USER_TYPE;
-    protected $primaryKey = 'user_id';
 
     public function isAdmin() {
         return $this->type === self::ADMIN_TYPE;

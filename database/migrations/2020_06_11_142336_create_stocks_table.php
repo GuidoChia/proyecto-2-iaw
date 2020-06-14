@@ -18,7 +18,7 @@ class CreateStocksTable extends Migration
             $table->timestamps();
             $table->integer("amount");
             $table->date("expiration");
-            $table->foreignId("presentation_id");
+            $table->foreignId("reactive_id");
         });
     }
 
