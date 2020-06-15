@@ -1,6 +1,4 @@
 <div class="container">
-    <p> The Search results for your query <b> {{ $query ?? '' }} </b> are :</p>
-    <h2>Reactive details</h2>
     <table class="table table-striped">
         <thead>
         <tr>

@@ -5,7 +5,7 @@
     <div class="jumbotron text-center">
         <h1>Reactive search</h1>
         <div class="content">
-            <form action="/search" method="GET" role="search">
+            <form action="/search-stock" method="GET" role="search">
                 @csrf
                 <div class="input-group">
                     <input class="form-control input-lg" name="reactive-input"
@@ -18,7 +18,7 @@
         </div>
     </div>
     @if(isset($reactives))
-    @include('search_result')
+    @include('search-stock-result')
     @endif
     @if(isset($message))
     <h1>{{$message}}</h1>

@@ -5,24 +5,22 @@
     <div class="jumbotron text-center">
         <h1>Stock upload</h1>
         <div class="content">
-            <form>
+            <form action="/upload-stock" method="POST" role="upload_reactive">
                 @csrf
-                <div class="form-group">
-                    <input class="form-control input-lg" id="reactive-input"
-                           placeholder="Reactive">
-                </div>
-                <div class="form-group">
-                    <input class="form-control input-lg" id="amount-input" placeholder="Amount">
-                </div>
-                <div class="form-group">
-                    <input class="form-control input-lg" id="expiration-date-input" placeholder="Expiration date">
-                </div>
-                <div class="form-group text-left">
-                    <button class="btn btn-primary" id="upload-button" type="button">Upload</button>
+                <div class="input-group">
+                    <input class="form-control input-lg" name="reactive-input" placeholder="Reactive">
+                    <input class="form-control input-lg" name="amount-input" placeholder="Amount">
+                    <input class="form-control input-lg" name="expiration-date-input" placeholder="Expiration date">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
+    @if(isset($message))
+    <h1>{{$message}}</h1>
+    @endif
 </div>
 
 @endsection

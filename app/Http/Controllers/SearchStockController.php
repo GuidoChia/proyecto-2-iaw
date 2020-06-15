@@ -6,7 +6,7 @@ use App\Reactive;
 use App\Stock;
 use Illuminate\Http\Request;
 
-class SearchController extends Controller {
+class SearchStockController extends Controller {
     /**
      * Create a new controller instance.
      *
@@ -22,10 +22,10 @@ class SearchController extends Controller {
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index() {
-        return view('search');
+        return view('search-stock');
     }
 
-    public function searchReactive(Request $request) {
+    public function searchStock(Request $request) {
         $reactiveInput = $request->input('reactive-input');
         if ($reactiveInput != null) {
             $reactives = Reactive::like('name', '%' . $reactiveInput . '%')->get();
@@ -38,12 +38,12 @@ class SearchController extends Controller {
                 $stocks->push($currentStocks);
             }
             if (count($stocks) > 0) {
-                return view('search')->withReactives($reactives)->with('stocks', $stocks);
+                return $this->index()->withReactives($reactives)->with('stocks', $stocks);
             } else {
-                return view('search')->withMessage('The reactive doesn\'t exists in stock');
+                return $this->index()->withMessage('The reactive doesn\'t exist in stock');
             }
         } else {
-            return view('search');
+            return $this->index();
         }
     }
 }

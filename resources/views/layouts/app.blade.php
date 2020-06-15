@@ -15,7 +15,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Import jQuery-->
@@ -63,9 +62,20 @@
                     <a class="nav-link" href="{{ url('/home') }}">
                         Home
                     </a>
-                    <a class="nav-link" href="{{ url('/search') }}">
-                        Search
-                    </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Search
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('search-reactive') }}">
+                                Search reactive
+                            </a>
+                            <a class="dropdown-item" href="{{ route('search-stock') }}">
+                                Search stock
+                            </a>
+                        </div>
+                    </li>
 
                     @if (Auth::user()->isAdmin())
                     <li class="nav-item dropdown">
