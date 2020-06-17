@@ -16,10 +16,11 @@ class VerifyAdmin
      */
     public function handle($request, Closure $next)
     {
+
         $user = Auth::user();
         if($user->isAdmin()){
             return $next($request);
         }
-        return redirect('home');
+        abort(403, 'Access denied');
     }
 }

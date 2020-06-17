@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Reactive;
-use App\Stock;
 use Illuminate\Http\Request;
 
-class SearchReactiveController extends Controller
-{
+class SearchReactiveController extends Controller {
     /**
      * Create a new controller instance.
      *
@@ -23,18 +21,15 @@ class SearchReactiveController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index() {
-        return view('search-reactive');
+        $reactives = Reactive::all()->sortBy('name');
+        return view('search-reactive')->with('existent_reactives', $reactives);
     }
 
     public function searchReactive(Request $request) {
         $reactiveInput = $request->input('reactive-input');
         if ($reactiveInput != null) {
-            $reactives = Reactive::like('name', '%' . $reactiveInput . '%')->get();
-            if (count($reactives) > 0) {
-                return $this->index()->withReactives($reactives);
-            } else {
-                return $this->index()->withMessage('The reactive doesn\'t exist');
-            }
+            $reactive = Reactive::where('name', '=', $reactiveInput)->get()->first();
+            return $this->index()->withReactive($reactive);
         } else {
             return $this->index();
         }

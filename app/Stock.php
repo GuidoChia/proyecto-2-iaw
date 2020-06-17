@@ -25,7 +25,7 @@ class Stock extends Model
     /**
      * @var array
      */
-    protected $fillable = ['created_at', 'updated_at', 'amount', 'expiration', 'reactive_id'];
+    protected $fillable = ['created_at', 'updated_at', 'type', 'expiration', 'reactive_id'];
 
     /**
      * Get the reactive from the presentation.

@@ -5,24 +5,20 @@
     <div class="jumbotron text-center">
         <h1>Reactive search</h1>
         <div class="content">
-            <form action="/search-reactive" method="GET" role="search">
+            <form action="{{route('search-reactive-result')}}" method="GET" role="search">
                 @csrf
+
                 <div class="input-group">
-                    <input class="form-control input-lg" name="reactive-input"
-                           placeholder="What reactive are you looking for?">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                    </div>
+                    @include('reactive-input')
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </div>
-            </form>
         </div>
+        </form>
     </div>
-    @if(isset($reactives))
-    @include('search-reactive-result')
-    @endif
-    @if(isset($message))
-    <h1>{{$message}}</h1>
-    @endif
 </div>
+@if(isset($reactive))
+@include('search-reactive-result')
+@endif
+
 
 @endsection

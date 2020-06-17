@@ -8,7 +8,7 @@
     <div class="jumbotron">
         <div class="row">
             <div class="col-sm align-text-center">
-                <h1>Laboratorio de Análisis Clínicos</h1>
+                <h1>Clinical Analysis Laboratory</h1>
             </div>
         </div>
     </div>

@@ -17,13 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search-stock', 'SearchStockController@searchStock')->name('search-stock');
-Route::get('/search-reactive', 'SearchReactiveController@searchReactive')->name('search-reactive');
+Route::get('/search-stock', 'SearchStockController@index')->name('search-stock');
+Route::get('/search-stock-result', 'SearchStockController@searchStock')->name('search-stock-result');
+
+Route::get('/search-reactive', 'SearchReactiveController@index')->name('search-reactive');
+Route::get('/search-reactive-result', 'SearchReactiveController@searchReactive')->name('search-reactive-result');
+
 Route::middleware('check_admin')->group(function () {
-    Route::get('/upload-stock', 'UploadStockController@index')->name('upload-stock');
-    Route::post('/upload-stock', 'UploadStockController@uploadStock')->name('upload-stock');
-    Route::get('/upload-reactive', 'UploadReactiveController@index')->name('upload-reactive');
-    Route::post('/upload-reactive', 'UploadReactiveController@uploadReactive')->name('upload-reactive');
+    Route::get('/update-stock', 'UpdateStockController@index')->name('update-stock');
+    Route::post('/update-stock', 'UpdateStockController@uploadStock')->name('update-stock');
+    Route::get('/update-reactive', 'UpdateReactiveController@index')->name('update-reactive');
+    Route::post('/update-reactive', 'UpdateReactiveController@uploadReactive')->name('update-reactive');
 });
 
 Auth::routes();

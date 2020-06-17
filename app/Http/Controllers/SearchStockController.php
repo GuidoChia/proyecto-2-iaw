@@ -22,28 +22,37 @@ class SearchStockController extends Controller {
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index() {
-        return view('search-stock');
+        $reactives = Reactive::all()->sortBy('name');
+        return view('search-stock')->with('existent_reactives', $reactives);
+    }
+
+    public function validateRequest(Request $request) {
+        $request->validate([
+            'reactive-input' => ['required', 'string'],
+        ]);
+        $reactive = Reactive::where('name', '=', $request->input('reactive-input'))->get()->first();
+        if ($reactive->stocks()->count() == 0) {
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+                'reactive-input' => ["Reactive doesn't exist in stock."],
+            ]);
+            throw $error;
+        }
     }
 
     public function searchStock(Request $request) {
+        $this->validateRequest($request);
         $reactiveInput = $request->input('reactive-input');
-        if ($reactiveInput != null) {
-            $reactives = Reactive::like('name', '%' . $reactiveInput . '%')->get();
-            $stocks = collect(new Stock());
-            $reactives = $reactives->reject(function ($value, $key) {
-                return $value->stocks()->get()->count() == 0;
-            });
-            foreach ($reactives as $reactive) {
-                $currentStocks = $reactive->stocks()->get();
-                $stocks->push($currentStocks);
-            }
-            if (count($stocks) > 0) {
-                return $this->index()->withReactives($reactives)->with('stocks', $stocks);
-            } else {
-                return $this->index()->withMessage('The reactive doesn\'t exist in stock');
-            }
-        } else {
-            return $this->index();
+        $reactive = Reactive::where('name', '=', $reactiveInput)->get()->first();
+        $dates = $reactive->stocks()->select('expiration')->distinct()->get();
+        $rows = collect(new \stdClass());
+        foreach ($dates as $date) {
+            $upAmount = $reactive->getAmount($date->expiration, 'up');
+            $downAmount = $reactive->getAmount($date->expiration, 'down');
+            $row = new \stdClass();
+            $row->amount = $upAmount - $downAmount;
+            $row->expiration = $date->expiration;
+            $rows->push($row);
         }
+        return $this->index()->withReactive($reactive)->withRows($rows);
     }
 }

@@ -36,4 +36,12 @@ class Reactive extends Model {
         return $query->where($field, 'LIKE', "%$value%");
     }
 
+    public function getAmount($date, $type){
+        return $this->stocks()
+            ->where('expiration', '=', $date)
+            ->where('type', '=', $type)
+            ->get()
+            ->count();
+    }
+
 }

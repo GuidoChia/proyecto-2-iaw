@@ -1,21 +1,19 @@
 <div class="container">
-    <table class="table table-striped">
+    <table class="table table-striped" >
         <thead>
         <tr>
             <th>Reactive</th>
-            <th>Stock</th>
             <th>Expiration</th>
+            <th>Stock</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($reactives as $reactive)
-        @foreach($stocks->slice($loop->index, 1)->first() as $stock)
+        @foreach($rows as $row)
         <tr>
             <td>{{$reactive->name}}</td>
-            <td>{{$stock->amount}}</td>
-            <td>{{$stock->expiration}}</td>
+            <td>{{$row->expiration}}</td>
+            <td>{{$row->amount}}</td>
         </tr>
-        @endforeach
         @endforeach
         </tbody>
     </table>
