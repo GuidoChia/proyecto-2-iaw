@@ -28,6 +28,10 @@ Route::middleware('check_admin')->group(function () {
     Route::post('/update-stock', 'UpdateStockController@uploadStock')->name('update-stock');
     Route::get('/update-reactive', 'UpdateReactiveController@index')->name('update-reactive');
     Route::post('/update-reactive', 'UpdateReactiveController@uploadReactive')->name('update-reactive');
+    Route::get('/remove-stock', 'RemoveStockController@index')->name('remove-stock');
+    Route::post('/remove-stock', 'RemoveStockController@removeStock')->name('remove-stock');
+    Route::get('/remove-reactive', 'RemoveReactiveController@index')->name('remove-reactive');
+    Route::post('/remove-reactive', 'RemoveReactiveController@removeReactive')->name('remove-reactive');
 });
 
 Auth::routes();

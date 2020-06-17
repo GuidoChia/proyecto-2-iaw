@@ -27,9 +27,6 @@
         </ul>
     </div>
     @endif
-    @if(isset($message))
-    <h1>{{$message}}</h1>
-    @endif
 </div>
 
 @endsection
