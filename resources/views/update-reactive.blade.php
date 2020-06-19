@@ -5,12 +5,14 @@
     <div class="jumbotron text-center">
         <h1>Reactive update</h1>
         <div class="content">
-            <form action="{{route('update-reactive')}}" method="POST" role="update_reactive">
+            <form action="{{route('update-reactive')}}" method="POST" role="update_reactive"
+                  enctype="multipart/form-data">
                 @csrf
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm">
-                            <input class="form-control input-lg capitalized" name="reactive-input" placeholder="Reactive">
+                            <input class="form-control input-lg capitalized" name="reactive-input"
+                                   placeholder="Reactive">
                         </div>
                     </div>
                     <div class="row">
@@ -21,7 +23,7 @@
                     <div class="row">
                         <div class="col-sm text-left">
                             Barcode
-                            <input type="file" id="barcode-file-input" accept=".jpg,.png">
+                            <input type="file" name="barcode-file-input" accept=".jpg,.png,.jpeg">
                         </div>
                     </div>
                     <div class="row">

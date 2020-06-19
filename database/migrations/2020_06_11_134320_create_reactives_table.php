@@ -18,7 +18,7 @@ class CreateReactivesTable extends Migration
             $table->timestamps();
             $table->string("name")->unique();
             $table->string("description")->nullable();
-            $table->binary("barcode")->nullable();
+            $table->text("barcode")->nullable();
         });
     }
 

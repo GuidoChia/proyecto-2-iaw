@@ -24,11 +24,13 @@ class UpdateReactiveController extends Controller {
         return view('update-reactive');
     }
 
-    public function validateRequest(Request $request) {
-        $request->validate([
+    public function validateRequest(Request $request, $image) {
+        $validData = $request->validate([
             'reactive-input' => ['required', 'string'],
             'description-input' => ['required', 'string'],
+            'image' => ['image', 'mimes:jpeg,jpg,png', 'max:10240']
         ]);
+        $validData['image'] = $image;
         $reactives = Reactive::where('name', $request->input('reactive-input'))->get();
         if ($reactives->count() > 0) {
             $error = \Illuminate\Validation\ValidationException::withMessages([
@@ -39,14 +41,21 @@ class UpdateReactiveController extends Controller {
     }
 
     public function uploadReactive(Request $request) {
-        $this->validateRequest($request);
+        $imageDataBLOB = null;
+        if ($request->file('barcode-file-input')){
+            $fileContents = file_get_contents();
+
+            if ($fileContents != null) {
+                $imageDataBLOB = base64_encode($file);
+            }
+        }
+        $this->validateRequest($request, $imageDataBLOB);
         $newReactive = new Reactive;
         $newReactive->name = $request->input('reactive-input');
         $newReactive->description = $request->input('description-input');
-        // TODO: ADD BARCODE
+        $newReactive->barcode = $imageDataBLOB;
         $newReactive->save();
         return $this->index()->withMessage("Reactive created");
-
     }
 
 }

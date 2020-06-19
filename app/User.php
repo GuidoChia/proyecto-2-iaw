@@ -17,9 +17,6 @@ class User extends Authenticatable
         return $this->type === self::ADMIN_TYPE;
     }
 
-    public function isManager() {
-        return $this->type === self::USER_TYPE;
-    }
     /**
      * The attributes that are mass assignable.
      *

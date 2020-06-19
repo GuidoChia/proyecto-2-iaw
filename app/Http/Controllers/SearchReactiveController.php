@@ -29,6 +29,15 @@ class SearchReactiveController extends Controller {
         $reactiveInput = $request->input('reactive-input');
         if ($reactiveInput != null) {
             $reactive = Reactive::where('name', '=', $reactiveInput)->get()->first();
+            if ($reactive->barcode != null) {
+                $target_dir = "uploads/temp/products/";
+                $target_name = "latest_uploaded_product" . $reactive->name;
+                $path = $target_dir . $target_name;
+                $imageBLOB = $reactive->barcode;
+                $file = fopen($path, "w");
+                fwrite($file, base64_decode($imageBLOB));
+                return $this->index()->withReactive($reactive)->withImagePath($path);
+            }
             return $this->index()->withReactive($reactive);
         } else {
             return $this->index();

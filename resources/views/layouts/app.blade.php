@@ -77,7 +77,6 @@
                         </div>
                     </li>
 
-                    @if (Auth::user()->isAdmin())
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -92,7 +91,6 @@
                             </a>
                         </div>
                     </li>
-                    @endif
 
                     @if (Auth::user()->isAdmin())
                     <li class="nav-item dropdown">
@@ -127,8 +125,15 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+                            @if (Auth::user()->isAdmin())
+                            <a class="dropdown-item" href="{{ route('manage-users') }}">
+                                Users management
+                            </a>
+                            @endif
                         </div>
+
                     </li>
+
                     @endguest
                 </ul>
             </div>

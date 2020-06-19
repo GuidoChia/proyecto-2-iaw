@@ -12,8 +12,8 @@
                     @include('reactive-input')
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
+            </form>
         </div>
-        </form>
     </div>
 </div>
 @if(isset($reactive))
