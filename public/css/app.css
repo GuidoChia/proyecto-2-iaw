@@ -7,14 +7,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-table tr td:first-letter{
-    text-transform:capitalize;
-}
-
-.capitalized{
-    text-transform:capitalize;
-}
-
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -44,10 +36,6 @@ table tr td:first-letter{
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: "Nunito", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-.capitalized::first-letter{
-    text-transform: capitalize;
 }
 
 *,
@@ -10938,7 +10926,5 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-
-
 }
 
