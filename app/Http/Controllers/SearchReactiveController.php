@@ -34,6 +34,9 @@ class SearchReactiveController extends Controller {
                 $target_name = "latest_uploaded_product" . $reactive->name;
                 $path = $target_dir . $target_name;
                 $imageBLOB = $reactive->barcode;
+                if (!file_exists($target_dir)){
+                    mkdir($target_dir, 0777, true);
+                }
                 $file = fopen($path, "w");
                 fwrite($file, base64_decode($imageBLOB));
                 return $this->index()->withReactive($reactive)->withImagePath($path);
