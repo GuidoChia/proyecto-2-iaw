@@ -42,11 +42,12 @@ class UpdateReactiveController extends Controller {
 
     public function uploadReactive(Request $request) {
         $imageDataBLOB = null;
-        if ($request->file('barcode-file-input')){
-            $fileContents = file_get_contents();
+        $file=$request->file('barcode-file-input');
+        if ($file!=null){
+            $fileContents = file_get_contents($file);
 
             if ($fileContents != null) {
-                $imageDataBLOB = base64_encode($file);
+                $imageDataBLOB = base64_encode($fileContents);
             }
         }
         $this->validateRequest($request, $imageDataBLOB);
