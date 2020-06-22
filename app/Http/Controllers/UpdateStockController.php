@@ -27,18 +27,19 @@ class UpdateStockController extends Controller {
     }
 
     private function validateRequest(Request $request) {
-        $request->validate([
-            'amount-input' => ['required', 'int'],
+        $validatedData = $request->validate([
+            'amount-input' => ['required', 'int', 'min:0', 'max:10'],
             'expiration-date-input' => ['required', 'date_format:Y-m-d'],
         ]);
         $reactiveInput = $request->input('reactive-input');
         $reactive = Reactive::where('name', $reactiveInput)->get()->first();
-        $expirationDateInput = $request->input('expiration-date-input');
+        $expirationDateInput = $validatedData['expiration-date-input'];
         $date = date_create_from_format('Y-m-d', $expirationDateInput);
 
+
         if (strtolower($request->input('type-input')) == 'down') {
-            $upAmount = $reactive->getAmount( $date, 'up');
-            $downAmount = $reactive->getAmount( $date, 'down');
+            $upAmount = $reactive->getAmount($date, 'up');
+            $downAmount = $reactive->getAmount($date, 'down');
             $amountInput = $request->input('amount-input');
             if ($upAmount - ($downAmount + $amountInput) < 0) {
                 $error = \Illuminate\Validation\ValidationException::withMessages([
