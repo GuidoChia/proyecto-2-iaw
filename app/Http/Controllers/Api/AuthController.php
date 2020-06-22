@@ -33,7 +33,7 @@ class AuthController extends Controller {
         ]);
 
         if(!auth()->attempt($validatedData)){
-            return respone(['message'=>'Invalid credentials']);
+            return response(['message'=>'Invalid credentials']);
         }
 
         $accessToken=auth()->user()->createToken('authToken')->accessToken;
