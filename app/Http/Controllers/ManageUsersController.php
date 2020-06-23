@@ -10,9 +10,9 @@ class ManageUsersController extends Controller {
         $name = strtolower($request->input('user-input'));
         $users = null;
         if ($name == null || trim($name) == '') {
-            $users = User::all();
+            $users = User::paginate(8);
         } else {
-            $users = User::where('name', 'ilike', '%'.$name.'%')->get();
+            $users = User::where('name', 'ilike', '%'.$name.'%')->paginate(8);
         }
         return view('manage-users')->withUsers($users);
     }
