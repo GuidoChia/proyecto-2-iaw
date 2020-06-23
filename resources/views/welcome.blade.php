@@ -5,7 +5,7 @@
 @section('content')
 <body>
 <div class="flex-center position-ref full-height">
-    <div class="jumbotron">
+    <div class="jumbotron animated bounceInDown">
         <div class="row">
             <div class="col-sm align-text-center">
                 <h1>Clinical Analysis Laboratory</h1>

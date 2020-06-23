@@ -26,6 +26,9 @@
     <!-- Latest bootstrap compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+    <!-- Animate compiled and minified CSS -->
+    <link href="{{ asset('css/animate.compat.css') }}" rel="stylesheet"
+
 </head>
 <body>
 <div id="app">

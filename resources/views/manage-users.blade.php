@@ -26,7 +26,7 @@
 </div>
 @if(isset($users))
 <div class="container">
-    <table class="table table-striped">
+    <table class="table table-striped animated fadeIn">
         <thead>
         <tr>
             <th>Name</th>
