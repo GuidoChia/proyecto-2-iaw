@@ -3,22 +3,16 @@
 @section('content')
 <div class="container-fluid flex-center position-ref full-height">
     <div class="jumbotron text-center">
-        <h1>Reactive update</h1>
+        <h1>Reactive upload</h1>
         <div class="content">
-            <form action="{{route('update-reactive')}}" method="POST" role="update_reactive"
+            <form action="{{route('upload-reactive')}}" method="POST" role="upload_reactive"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="container-fluid">
-
                     <div class="row">
                         <div class="col-sm">
-                            @include('reactive-input')
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <input class="form-control input-lg capitalized" name="new-name-input"
-                                   placeholder="New name">
+                            <input class="form-control input-lg capitalized" name="reactive-input"
+                                   placeholder="Reactive">
                         </div>
                     </div>
                     <div class="row">
@@ -34,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm">
-                            <button class="btn btn-primary" type="submit">Update</button>
+                            <button class="btn btn-primary" type="submit">Upload</button>
                         </div>
                     </div>
                 </div>
@@ -51,11 +45,12 @@
     </div>
     @endif
     @if(isset($message))
-    <div class="alert alert-primary">
+    <div class="alert alert-success">
         <ul>
             <li>{{$message}}</li>
         </ul>
     </div>
     @endif
 </div>
+
 @endsection

@@ -5,7 +5,7 @@
     <div class="jumbotron text-center">
         <h1>Stock update</h1>
         <div class="content">
-            <form action="{{route('update-stock')}}" method="POST" role="update_reactive">
+            <form action="{{route('update-stock')}}" method="POST" role="update_stock">
                 @csrf
                 <div class="container-fluid">
                     <div class="row">

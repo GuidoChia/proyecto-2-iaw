@@ -6,57 +6,42 @@ use App\Reactive;
 use Illuminate\Http\Request;
 
 class UpdateReactiveController extends Controller {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct() {
-        $this->middleware('auth');
+    public function index(Request $request) {
+        $reactives = Reactive::all()->sortBy('name');
+        return view('update-reactive')->with('existent_reactives', $reactives);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index() {
-        return view('update-reactive');
-    }
-
-    public function validateRequest(Request $request, $image) {
+    private function validateRequest(Request $request, $image) {
         $validData = $request->validate([
-            'reactive-input' => ['required', 'string'],
-            'description-input' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,jpg,png', 'max:10240']
         ]);
         $validData['image'] = $image;
-        $reactives = Reactive::where('name', $request->input('reactive-input'))->get();
-        if ($reactives->count() > 0) {
-            $error = \Illuminate\Validation\ValidationException::withMessages([
-                'reactive-input' => ["Reactive already exists"],
-            ]);
-            throw $error;
-        }
     }
 
-    public function uploadReactive(Request $request) {
+    public function updateReactive(Request $request) {
         $imageDataBLOB = null;
-        $file=$request->file('barcode-file-input');
-        if ($file!=null){
+        $file = $request->file('barcode-file-input');
+        if ($file != null) {
             $fileContents = file_get_contents($file);
-
             if ($fileContents != null) {
                 $imageDataBLOB = base64_encode($fileContents);
             }
         }
         $this->validateRequest($request, $imageDataBLOB);
-        $newReactive = new Reactive;
-        $newReactive->name = $request->input('reactive-input');
-        $newReactive->description = $request->input('description-input');
-        $newReactive->barcode = $imageDataBLOB;
+        $reactives = Reactive::where('name', $request->input('reactive-input'))->get();
+        $newReactive = $reactives->first();
+        $newName = $request->input('new-name-input');
+        if ($newName != null && $newName != "") {
+            $newReactive->name = $newName;
+        }
+        $newDescription = $request->input('description-input');
+        if ($newDescription != null && $newDescription != "") {
+            $newReactive->description = $newDescription;
+        }
+        if ($imageDataBLOB != null) {
+            $newReactive->barcode = $imageDataBLOB;
+        }
         $newReactive->save();
-        return $this->index()->withMessage("Reactive created");
+        return $this->index($request)->withMessage("Reactive updated");
     }
-
 }

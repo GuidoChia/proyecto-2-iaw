@@ -26,8 +26,8 @@ Route::get('/search-reactive-result', 'SearchReactiveController@searchReactive')
 Route::get('/update-stock', 'UpdateStockController@index')->name('update-stock');
 Route::post('/update-stock', 'UpdateStockController@uploadStock')->name('update-stock');
 
-Route::get('/update-reactive', 'UpdateReactiveController@index')->name('update-reactive');
-Route::post('/update-reactive', 'UpdateReactiveController@uploadReactive')->name('update-reactive');
+Route::get('/upload-reactive', 'UploadReactiveController@index')->name('upload-reactive');
+Route::post('/upload-reactive', 'UploadReactiveController@uploadReactive')->name('upload-reactive');
 
 Route::middleware('check_admin')->group(function () {
     Route::get('/remove-stock', 'RemoveStockController@index')->name('remove-stock');
@@ -37,7 +37,10 @@ Route::middleware('check_admin')->group(function () {
     Route::post('/remove-reactive', 'RemoveReactiveController@removeReactive')->name('remove-reactive');
 
     Route::get('/manage-users', 'ManageUsersController@index')->name('manage-users');
-    Route::post('/manage-users', 'ManageUsersController@setAsAdmin')->name('set-as-admin')->middleware(['auth', 'password.confirm']);;
+    Route::post('/manage-users', 'ManageUsersController@setAsAdmin')->name('set-as-admin')->middleware(['auth', 'password.confirm']);
+
+    Route::get('/update-reactive', 'UpdateReactiveController@index')->name('update-reactive');
+    Route::post('/update-reactive', 'UpdateReactiveController@updateReactive')->name('update-reactive');
 });
 
 Auth::routes();
