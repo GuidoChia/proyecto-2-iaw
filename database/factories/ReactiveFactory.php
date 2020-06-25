@@ -6,8 +6,7 @@ use App\Reactive;
 use Faker\Generator as Faker;
 
 $factory->define(Reactive::class, function (Faker $faker) {
-    $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-    $imageDataBLOB = base64_encode($generator->getBarcode($faker->numerify('############'), $generator::TYPE_CODE_128));
+    $imageDataBLOB = base64_encode(file_get_contents('https://barcode.tec-it.com/barcode.ashx?data='.$faker->numerify('#########')));
 
     return [
         'name' => $faker->unique()->numerify('Reactive ###'),

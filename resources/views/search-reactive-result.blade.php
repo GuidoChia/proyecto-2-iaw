@@ -5,7 +5,7 @@
             <th>Reactive</th>
             <th>Description</th>
             @if(isset($imagePath))
-            <th>Image</th>
+            <th>Barcode</th>
             @endif
         </tr>
         </thead>
@@ -14,7 +14,7 @@
             <td>{{$reactive->name}}</td>
             <td>{{$reactive->description}}</td>
             @if(isset($imagePath))
-            <td><a href="{{$imagePath}}" target="_blank">Image</a></td>
+            <td><a href="{{$imagePath}}" target="_blank">See barcode</a></td>
             @endif
         </tr>
         </tbody>
