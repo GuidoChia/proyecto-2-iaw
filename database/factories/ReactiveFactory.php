@@ -10,7 +10,7 @@ $factory->define(Reactive::class, function (Faker $faker) {
     $imageDataBLOB = base64_encode($generator->getBarcode($faker->numerify('############'), $generator::TYPE_CODE_128));
 
     return [
-        'name' => $faker->numerify('Reactive ###'),
+        'name' => $faker->unique()->numerify('Reactive ###'),
         'description' => $faker->sentence(),
         'barcode' => $imageDataBLOB,
     ];
