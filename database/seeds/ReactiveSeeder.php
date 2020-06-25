@@ -9,7 +9,7 @@ class ReactiveSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        factory(App\Reactive::class, 5)->create();
+        factory(App\Reactive::class, 40)->create();
 
     }
 }
