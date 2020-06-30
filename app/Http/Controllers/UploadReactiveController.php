@@ -24,13 +24,12 @@ class UploadReactiveController extends Controller {
         return view('upload-reactive');
     }
 
-    public function validateRequest(Request $request, $image) {
+    public function validateRequest(Request $request) {
         $validData = $request->validate([
             'reactive-input' => ['required', 'string'],
             'description-input' => ['required', 'string'],
-            'image' => ['image', 'mimes:jpeg,jpg,png', 'max:10240']
+            'barcode-file-input' => ['image', 'max:10240']
         ]);
-        $validData['image'] = $image;
         $reactives = Reactive::where('name', $request->input('reactive-input'))->get();
         if ($reactives->count() > 0) {
             $error = \Illuminate\Validation\ValidationException::withMessages([
@@ -49,7 +48,7 @@ class UploadReactiveController extends Controller {
                 $imageDataBLOB = base64_encode($fileContents);
             }
         }
-        $this->validateRequest($request, $imageDataBLOB);
+        $this->validateRequest($request);
         $newReactive = new Reactive;
         $newReactive->name = $request->input('reactive-input');
         $newReactive->description = $request->input('description-input');

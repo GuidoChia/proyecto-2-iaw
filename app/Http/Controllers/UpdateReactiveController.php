@@ -11,11 +11,17 @@ class UpdateReactiveController extends Controller {
         return view('update-reactive')->with('existent_reactives', $reactives);
     }
 
-    private function validateRequest(Request $request, $image) {
+    private function validateRequest(Request $request) {
         $validData = $request->validate([
-            'image' => ['image', 'mimes:jpeg,jpg,png', 'max:10240']
+            'barcode-file-input' => ['image', 'max:10240']
         ]);
-        $validData['image'] = $image;
+        $reactives = Reactive::where('name', $request->input('new-name-input'))->get();
+        if ($reactives->count() > 0) {
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+                'reactive-input' => ["Reactive already exists"],
+            ]);
+            throw $error;
+        }
     }
 
     public function updateReactive(Request $request) {
@@ -27,7 +33,7 @@ class UpdateReactiveController extends Controller {
                 $imageDataBLOB = base64_encode($fileContents);
             }
         }
-        $this->validateRequest($request, $imageDataBLOB);
+        $this->validateRequest($request);
         $reactives = Reactive::where('name', $request->input('reactive-input'))->get();
         $newReactive = $reactives->first();
         $newName = $request->input('new-name-input');
