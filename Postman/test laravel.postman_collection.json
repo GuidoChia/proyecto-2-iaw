@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "dec20a42-1d97-46a9-8b17-0476b3d4697f",
+		"name": "test laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "test01@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "testuser",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Registro un usuario con los siguientes datos:\r\nemail: test00@gmail.com\r\nname= test\r\npassword= 12345678"
+			},
+			"response": []
+		},
+		{
+			"name": "API Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "64450788-6617-4ef3-a3e8-d48082d194bc",
+						"exec": [
+							"var jsonData= pm.response.json();\r",
+							"pm.environment.set('token', jsonData.accessToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiMDExZTMzMWY2ZTdlNDM5ZDE4MDY5NzM4NDI1MGRhZWU2Mzc2ZDlmNmM4N2Q1YmU3ODQyZDkzMzY2MmYwNjNjMTdkNWI0NjVhNTEzY2Y2MWEiLCJpYXQiOjE1OTI1OTc0NTQsIm5iZiI6MTU5MjU5NzQ1NCwiZXhwIjoxNjI0MTMzNDU0LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.hUE2jp98Lzt1CiXEmFkDaYeVVwyc3uBP4_OROAOxpzwIlOPoyOerXOHebbx_p6HhPy2v6KthtTyxBYGLA_iP0ypqlsIgfhCOhd-RNHDiwsNf5LD9d2vjBhYTDb71pVa-HZSjAlX8tg1PveaIe4wOFh67N3JgP_eL40QgbAPiDON8hl8RN9AJstCMyilJxxj0-HaFUDKOxKCLs9RsMw6wjebykBYsr-3H42s4CBn-g2WzQhXFzeAT7VytSqD_7UIjBznd_Mz-c0Bz8WGbsWKORKh0QQQiuRuatEPdWk8JHDDGeh3-V0v2i8K6Lly5VKNgJTKlGWn--U6AMJlYX1mX4UDDhli_p_lYaaq6WvEDOGMsGP2VhINZlcDGnd_1rv-1g_vXBpZXNDzRtQdbPfVOytl4bcr3qg0gScZgD52ZOCMBDK7E17BnlmBDFdfG7aIJMh90dLtvLUzFjDn36SIOBEjiNOSDyu80JRtxtc0gcBzRpND6QIzQAdemzFQCXHCT6ojQgeOW91GBTtBtPYIAohUHJE7nDSjEeI9BOWECczTdpAA5mM1nDL5xgVU7yFsGaZzEWA1nG1JCQQsedSw2Bxhpw_CLHpWfd-HazpIguNW2-jhGXbfCdIr9pv9FI103c1Qvga0itZmD2k5K4u4d24Hsxh_EmwEf8Ah4SHUGBVM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "test01@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Guido",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Hago login con los siguientes datos:\r\nemail: test00@gmail.com\r\nname= test\r\n\r\nDevuelve accessToken que se guarda en una variable de entorno para ser usada luego"
+			},
+			"response": []
+		},
+		{
+			"name": "API Reactive",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiMDExZTMzMWY2ZTdlNDM5ZDE4MDY5NzM4NDI1MGRhZWU2Mzc2ZDlmNmM4N2Q1YmU3ODQyZDkzMzY2MmYwNjNjMTdkNWI0NjVhNTEzY2Y2MWEiLCJpYXQiOjE1OTI1OTc0NTQsIm5iZiI6MTU5MjU5NzQ1NCwiZXhwIjoxNjI0MTMzNDU0LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.hUE2jp98Lzt1CiXEmFkDaYeVVwyc3uBP4_OROAOxpzwIlOPoyOerXOHebbx_p6HhPy2v6KthtTyxBYGLA_iP0ypqlsIgfhCOhd-RNHDiwsNf5LD9d2vjBhYTDb71pVa-HZSjAlX8tg1PveaIe4wOFh67N3JgP_eL40QgbAPiDON8hl8RN9AJstCMyilJxxj0-HaFUDKOxKCLs9RsMw6wjebykBYsr-3H42s4CBn-g2WzQhXFzeAT7VytSqD_7UIjBznd_Mz-c0Bz8WGbsWKORKh0QQQiuRuatEPdWk8JHDDGeh3-V0v2i8K6Lly5VKNgJTKlGWn--U6AMJlYX1mX4UDDhli_p_lYaaq6WvEDOGMsGP2VhINZlcDGnd_1rv-1g_vXBpZXNDzRtQdbPfVOytl4bcr3qg0gScZgD52ZOCMBDK7E17BnlmBDFdfG7aIJMh90dLtvLUzFjDn36SIOBEjiNOSDyu80JRtxtc0gcBzRpND6QIzQAdemzFQCXHCT6ojQgeOW91GBTtBtPYIAohUHJE7nDSjEeI9BOWECczTdpAA5mM1nDL5xgVU7yFsGaZzEWA1nG1JCQQsedSw2Bxhpw_CLHpWfd-HazpIguNW2-jhGXbfCdIr9pv9FI103c1Qvga0itZmD2k5K4u4d24Hsxh_EmwEf8Ah4SHUGBVM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/usage",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"usage"
+					]
+				},
+				"description": "Busco en la api el reactivo con id=1."
+			},
+			"response": []
+		},
+		{
+			"name": "API Usage",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiMDExZTMzMWY2ZTdlNDM5ZDE4MDY5NzM4NDI1MGRhZWU2Mzc2ZDlmNmM4N2Q1YmU3ODQyZDkzMzY2MmYwNjNjMTdkNWI0NjVhNTEzY2Y2MWEiLCJpYXQiOjE1OTI1OTc0NTQsIm5iZiI6MTU5MjU5NzQ1NCwiZXhwIjoxNjI0MTMzNDU0LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.hUE2jp98Lzt1CiXEmFkDaYeVVwyc3uBP4_OROAOxpzwIlOPoyOerXOHebbx_p6HhPy2v6KthtTyxBYGLA_iP0ypqlsIgfhCOhd-RNHDiwsNf5LD9d2vjBhYTDb71pVa-HZSjAlX8tg1PveaIe4wOFh67N3JgP_eL40QgbAPiDON8hl8RN9AJstCMyilJxxj0-HaFUDKOxKCLs9RsMw6wjebykBYsr-3H42s4CBn-g2WzQhXFzeAT7VytSqD_7UIjBznd_Mz-c0Bz8WGbsWKORKh0QQQiuRuatEPdWk8JHDDGeh3-V0v2i8K6Lly5VKNgJTKlGWn--U6AMJlYX1mX4UDDhli_p_lYaaq6WvEDOGMsGP2VhINZlcDGnd_1rv-1g_vXBpZXNDzRtQdbPfVOytl4bcr3qg0gScZgD52ZOCMBDK7E17BnlmBDFdfG7aIJMh90dLtvLUzFjDn36SIOBEjiNOSDyu80JRtxtc0gcBzRpND6QIzQAdemzFQCXHCT6ojQgeOW91GBTtBtPYIAohUHJE7nDSjEeI9BOWECczTdpAA5mM1nDL5xgVU7yFsGaZzEWA1nG1JCQQsedSw2Bxhpw_CLHpWfd-HazpIguNW2-jhGXbfCdIr9pv9FI103c1Qvga0itZmD2k5K4u4d24Hsxh_EmwEf8Ah4SHUGBVM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/usage",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"usage"
+					]
+				},
+				"description": "Hago request del usage de la api. Devuelve todos los stocks de los pasados 6 meses."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
