@@ -11,3 +11,6 @@ Los usuarios serían los siguientes:
 - Secretario: podrá realizar consultas sobre los reactivos actuales.
 ## API REST
 La idea es dar una API REST que permita conocer el stock actual y el uso que se le dio a los reactivos a través de un plazo de tiempo de 6 meses. Con esta información, la aplicación del próximo proyecto podría calcular que reactivos serán necesarios en el próximo mes, así como avisar al usuario la pronta expiración de algun reactivo.
+
+# Uso de la API
+En la carpeta Postman se incluyen dos archivos, correspondientes a una collection de postman con todos los requerimientos que se pueden realizar a la API, como tambien el enviroment que se usa, que contiene la url, y un espacio para guardar las tokens, y no tener que copiarlas y pegarlas. Para que funcione la api en postman se deben importar ambos archivos.
