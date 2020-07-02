@@ -14,3 +14,7 @@ La idea es dar una API REST que permita conocer el stock actual y el uso que se 
 
 # Uso de la API
 En la carpeta Postman se incluyen dos archivos, correspondientes a una collection de postman con todos los requerimientos que se pueden realizar a la API, como tambien el enviroment que se usa, que contiene la url, y un espacio para guardar las tokens, y no tener que copiarlas y pegarlas. Para que funcione la api en postman se deben importar ambos archivos.
+
+# Links
+-[Video](https://www.youtube.com/watch?v=6bqaa_BMc5E&t=3s)
+-[Deploy en Heroku](http://proyecto-2-iaw-guido.herokuapp.com/)
