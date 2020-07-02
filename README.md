@@ -7,8 +7,8 @@ Las entidades principales de este sistema serían:
 - El stock de los reactivos, donde se tendría la cantidad de unidades de cada uno, y su fecha de vencimiento.
 ## Usuarios
 Los usuarios serían los siguientes:
-- Dueño del laboratorio: podrá realizar consultas, altas y modificaciones.
-- Secretario: podrá realizar consultas sobre los reactivos actuales.
+- Dueño del laboratorio: podrá realizar consultas, altas, bajas y modificaciones.
+- Secretario: podrá realizar consultas sobre los reactivos actuales, como también altas.
 ## API REST
 La idea es dar una API REST que permita conocer el stock actual y el uso que se le dio a los reactivos a través de un plazo de tiempo de 6 meses. Con esta información, la aplicación del próximo proyecto podría calcular que reactivos serán necesarios en el próximo mes, así como avisar al usuario la pronta expiración de algun reactivo.
 
