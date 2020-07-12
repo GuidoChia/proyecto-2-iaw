@@ -23,4 +23,5 @@ Route::post('/login', 'Api\AuthController@login');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('usage', 'Api\EndpointController@getUsage');
     Route::get('reactive', 'Api\EndpointController@getReactive');
+    Route::get('reactives', 'Api\EndpointController@getReactives');
 });
