@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
@@ -27,14 +30,11 @@
 <div id="app">
 
     <stock-component>
-        <div class="container" style="">
-            <div class="spinner-border"
-                 style="width: 5rem; height: 5rem; left: 50%; margin-left: -4em;"
-                 role="status">
+        <div class="text-center">
+            <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-
     </stock-component>
 </div>
 </body>
