@@ -28,11 +28,13 @@
 </head>
 <body>
 <div id="app">
-    <div class="d-flex align-items-center">
-        <strong>Loading...</strong>
-        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
-    </div>
-    <stock-component></stock-component>
+
+    <stock-component>
+        <div class="d-flex align-items-center">
+            <strong>Loading...</strong>
+            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+        </div>
+    </stock-component>
 </div>
 </body>
 </html>
