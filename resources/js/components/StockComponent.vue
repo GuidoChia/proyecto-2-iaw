@@ -82,14 +82,14 @@
             };
 
             Axios.get(
-                'http://127.0.0.1:8000/api/usage',
+                'http://proyecto-2-iaw-guido.herokuapp.com/api/usage',
                 config
             ).then((response) => {
                 this.stock = response.data.success
             });
 
             Axios.get(
-                'http://127.0.0.1:8000/api/reactives',
+                'http://proyecto-2-iaw-guido.herokuapp.com/api/reactives',
                 config
             ).then((response) => {
                 this.reactives = response.data.success
