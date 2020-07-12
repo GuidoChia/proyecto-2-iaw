@@ -77,6 +77,7 @@
         },
         mounted() {
             const accessToken = process.env.MIX_ACCESS_TOKEN
+            console.log("token: "+accessToken)
             const config = {
                 headers: {Authorization: `Bearer ${accessToken}`}
             };
