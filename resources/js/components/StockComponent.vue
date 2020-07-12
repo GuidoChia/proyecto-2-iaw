@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!isLoading">
         <div>
             <b-navbar toggleable="lg" type="dark" variant="info">
                 <b-navbar-brand>Welcome</b-navbar-brand>
@@ -49,6 +49,7 @@
             </div>
         </div>
     </div>
+    <div v-else><b-spinner label="Spinning"></b-spinner></div>
 </template>
 
 <script>
@@ -70,6 +71,8 @@
                 ],
                 sortBy: "id",
                 sortDesc: false,
+                isLoadingUsage: true,
+                isLoadingReactives: true
             }
         },
         components: {
@@ -86,6 +89,7 @@
                 config
             ).then((response) => {
                 this.stock = response.data.success
+                this.isLoadingUsage = false
             });
 
             Axios.get(
@@ -93,12 +97,18 @@
                 config
             ).then((response) => {
                 this.reactives = response.data.success
+                this.isLoadingReactives = false
             });
+
         },
         computed: {
             rows() {
                 return this.stock.length
+            },
+            isLoading(){
+                return (this.isLoadingReactives || this.isLoadingUsage)
             }
+
         }
     }
 </script>
