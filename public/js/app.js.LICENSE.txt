@@ -5,6 +5,14 @@
   */
 
 /*!
+ * BootstrapVue Icons, generated from Bootstrap Icons 1.0.0-alpha4
+ *
+ * @link https://icons.getbootstrap.com/
+ * @license MIT
+ * https://github.com/twbs/icons/blob/master/LICENSE.md
+ */
+
+/*!
  * Sizzle CSS Selector Engine v2.3.5
  * https://sizzlejs.com/
  *
@@ -35,6 +43,17 @@
  * Date: 2020-05-04T22:49Z
  */
 
+/*! 
+  * portal-vue © Thorsten Lünborg, 2019 
+  * 
+  * Version: 2.1.7
+  * 
+  * LICENCE: MIT 
+  * 
+  * https://github.com/linusborg/portal-vue
+  * 
+ */
+
 /**
  * @license
  * Lodash <https://lodash.com/>
@@ -42,6 +61,12 @@
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/**
+ * vue-paginate v3.6.0
+ * (c) 2018 Taha Shashtari
+ * @license MIT
  */
 
 /**!
