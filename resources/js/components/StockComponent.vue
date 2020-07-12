@@ -81,7 +81,7 @@
             const config = {
                 headers: {Authorization: `Bearer ${accessToken}`}
             };
-            console.log("headers: "+config.headers)
+            console.log("headers: "+config.headers.Authorization)
 
             Axios.get(
                 'http://proyecto-2-iaw-guido.herokuapp.com/api/usage',
