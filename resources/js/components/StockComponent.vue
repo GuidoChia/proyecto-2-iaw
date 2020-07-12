@@ -77,10 +77,11 @@
         },
         mounted() {
             const accessToken = process.env.MIX_ACCESS_TOKEN
-            console.log("token: "+accessToken)
+
             const config = {
                 headers: {Authorization: `Bearer ${accessToken}`}
             };
+            console.log("headers: "+config.headers)
 
             Axios.get(
                 'http://proyecto-2-iaw-guido.herokuapp.com/api/usage',
