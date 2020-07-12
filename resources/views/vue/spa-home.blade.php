@@ -30,9 +30,10 @@
 <div id="app">
 
     <stock-component>
-        <div class="d-flex align-items-center">
-            <strong>Loading...</strong>
-            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+        <div class="text-center">
+            <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
     </stock-component>
 </div>
