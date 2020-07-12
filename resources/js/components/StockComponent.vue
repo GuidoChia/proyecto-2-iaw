@@ -76,23 +76,15 @@
             ReactivesNeededComponent
         },
         mounted() {
-            const accessToken = process.env.MIX_ACCESS_TOKEN
-
-            const config = {
-                headers: {Authorization: `Bearer ${accessToken}`}
-            };
-            console.log("headers: "+config.headers.Authorization)
 
             Axios.get(
-                'http://proyecto-2-iaw-guido.herokuapp.com/api/usage',
-                config
+                'http://proyecto-2-iaw-guido.herokuapp.com/api/usage'
             ).then((response) => {
                 this.stock = response.data.success
             });
 
             Axios.get(
-                'http://proyecto-2-iaw-guido.herokuapp.com/api/reactives',
-                config
+                'http://proyecto-2-iaw-guido.herokuapp.com/api/reactives'
             ).then((response) => {
                 this.reactives = response.data.success
             });
