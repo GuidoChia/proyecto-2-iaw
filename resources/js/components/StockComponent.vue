@@ -78,13 +78,13 @@
         mounted() {
 
             Axios.get(
-                'http://proyecto-2-iaw-guido.herokuapp.com/api/usage'
+                'https://proyecto-2-iaw-guido.herokuapp.com/api/usage'
             ).then((response) => {
                 this.stock = response.data.success
             });
 
             Axios.get(
-                'http://proyecto-2-iaw-guido.herokuapp.com/api/reactives'
+                'https://proyecto-2-iaw-guido.herokuapp.com/api/reactives'
             ).then((response) => {
                 this.reactives = response.data.success
             });
