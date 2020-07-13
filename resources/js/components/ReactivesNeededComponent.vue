@@ -37,6 +37,7 @@
                 perPage: 15,
                 currentPage: 1,
                 fields: [
+                    {key: 'id', label:'Reactive Id',sortable: true},
                     {key: 'name', sortable: true},
                     {key: 'description', sortable: true},
                     {key: 'usedAmount', sortable: true},

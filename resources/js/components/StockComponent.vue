@@ -2,7 +2,11 @@
     <div>
         <div>
             <b-navbar toggleable="lg" type="dark" variant="info">
-                <b-navbar-brand>Welcome</b-navbar-brand>
+
+                <b-navbar-brand tag="h1">
+                    <svgicon icon="icon" width="30" height="26" color="#FFF"></svgicon>
+                    Welcome
+                </b-navbar-brand>
             </b-navbar>
         </div>
         <div class="container-fluid">
@@ -37,14 +41,8 @@
                         </div>
                     </div>
                 </div>
-                <div v-else>
-                    <b-spinner label="Spinning"></b-spinner>
-                </div>
                 <div v-if="stock!==null" class="col-sm">
                     <reactives-needed-component :stock="stock" :reactives="reactives"></reactives-needed-component>
-                </div>
-                <div v-else>
-                    <b-spinner label="Spinning"></b-spinner>
                 </div>
             </div>
         </div>
@@ -54,6 +52,7 @@
 <script>
     import Axios from 'axios'
     import ReactivesNeededComponent from "./ReactivesNeededComponent";
+    import './compiled-icons/icon';
 
     export default {
         data() {
@@ -63,13 +62,14 @@
                 perPage: 15,
                 currentPage: 1,
                 fields: [
-                    {key: 'id', sortable: true},
+                    {key: 'id', label: 'Stock Id', sortable: true},
                     {key: 'type', sortable: true},
                     {key: 'reactive_id', sortable: true},
                     {key: 'expiration', sortable: true},
                 ],
                 sortBy: "id",
                 sortDesc: false,
+                image_src: '/img/icon.png',
             }
         },
         components: {

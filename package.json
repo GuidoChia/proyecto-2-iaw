@@ -7,7 +7,8 @@
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "generate-icons": "vsvg -s ./svg-icons -t public/js/compiled-icons"
     },
     "devDependencies": {
         "axios": "^0.19.2",
@@ -21,11 +22,14 @@
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
         "vue": "^2.6.11",
-        "vue-template-compiler": "^2.6.10"
+        "vue-svgicon": "^3.2.0",
+        "vue-template-compiler": "^2.6.10",
+        "webpack-bundle-analyzer": "^3.8.0"
     },
     "dependencies": {
         "animate.css": "^4.1.0",
         "bootstrap-vue": "^2.15.0",
+        "vsvg": "^1.9.1",
         "vue-paginate": "^3.6.0",
         "vue-worker": "^1.2.1"
     }
