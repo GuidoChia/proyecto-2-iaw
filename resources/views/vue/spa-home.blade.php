@@ -11,15 +11,22 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/loader-styling.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div id="app">
-
+    <div>
+        <b-navbar toggleable="lg" type="dark" variant="info">
+            <b-navbar-brand tag="h1">
+                <svgicon icon="icon" width="30" height="26" color="#FFF"></svgicon>
+                Welcome
+            </b-navbar-brand>
+        </b-navbar>
+    </div>
     <stock-component>
-        <div class="text-center">
-            <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+        <div class="loading">
+            <div class="loader"></div>
         </div>
     </stock-component>
 </div>

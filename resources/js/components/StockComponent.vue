@@ -1,16 +1,6 @@
 <template>
     <div>
-        <div>
-            <b-navbar toggleable="lg" type="dark" variant="info">
-
-                <b-navbar-brand tag="h1">
-                    <svgicon icon="icon" width="30" height="26" color="#FFF"></svgicon>
-                    Welcome
-                </b-navbar-brand>
-            </b-navbar>
-        </div>
         <div class="container-fluid">
-
             <div class="row">
                 <div v-if="stock!==null" class="col-sm">
                     <div class="card">
