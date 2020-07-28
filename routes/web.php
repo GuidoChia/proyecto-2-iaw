@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/vue', function (){
+    return view('vue/spa-home');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
